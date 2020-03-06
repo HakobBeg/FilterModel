@@ -1,8 +1,6 @@
 import {Item} from './ItemModel';
 
 
-
-
 export function inorderTraverse(current: Node, list) {
 
   if (current.Left === null) {
@@ -143,6 +141,21 @@ export class FilerModelBuilder {
       alert('False Expression Typre!');
     }
 
+    return this;
+  }
+
+  setGreatherTHanExpression(leftOpProp, rightOp, method) {
+    this.expressions.push(new GreaterThan(leftOpProp, rightOp, method));
+    return this;
+  }
+
+  setSmallerThanExpression(leftOpProp, rightOp, method) {
+    this.expressions.push(new SmallerThan(leftOpProp, rightOp, method));
+    return this;
+  }
+
+  setEqualExpression(leftOpProp, rightOp, method) {
+    this.expressions.push(new Equal(leftOpProp, rightOp, method));
     return this;
   }
 

@@ -14,8 +14,8 @@ export default function Demo() {
   const filterModelBuilder = new FilterModel.FilerModelBuilder();
 
 
-  const filterModel = filterModelBuilder.setExpression('prop1', 1, FilterModel.cross, 'g').setExpression('prop1', 100, FilterModel.cross, 's')
-    .setExpression('prop2', 'test', FilterModel.cross, 'e').build();
+  const filterModel = filterModelBuilder.setGreatherTHanExpression('prop1', 1, FilterModel.cross).setSmallerThanExpression('prop1', 100, FilterModel.cross)
+    .setEqualExpression('prop2', 'test', FilterModel.cross).build();
 
   console.log('Not Filtered...', filterable);
 
