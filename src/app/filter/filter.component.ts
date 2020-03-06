@@ -56,24 +56,11 @@ export class FilterComponent implements OnInit {
     this.generateExpression();
     this.filterModelBuilder.reset();
 
-    this.modelService.currentItemsChanges$.next(this.inorderTraverse(this.filterModel.tree, this.modelService.tableModel.allItems));
+    this.modelService.currentItemsChanges$.next(FilterModel.inorderTraverse(this.filterModel.tree, this.modelService.tableModel.allItems));
 
   }
 
-  inorderTraverse(current: Node, list: Item[]) {
 
-    if (current.Left === null) {
-      list = list.filter((item) => {
-          return current.expression.result(item);
-        }
-      );
-      return list;
-    }
-
-    return current.method(this.inorderTraverse(current.Left, list), this.inorderTraverse(current.Right, list));
-
-
-  }
 
   show() {
     this.filterCompinnetModel.showComponent = !this.filterCompinnetModel.showComponent;

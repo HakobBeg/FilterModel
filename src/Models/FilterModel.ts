@@ -1,6 +1,23 @@
 import {Item} from './ItemModel';
 
 
+
+
+export function inorderTraverse(current: Node, list) {
+
+  if (current.Left === null) {
+    list = list.filter((item) => {
+        return current.expression.result(item);
+      }
+    );
+    return list;
+  }
+
+  return current.method(inorderTraverse(current.Left, list), inorderTraverse(current.Right, list));
+
+
+}
+
 // standart, simple Node for BinaryTree
 
 export class Node {

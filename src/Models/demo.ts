@@ -14,28 +14,14 @@ export default function Demo() {
   const filterModelBuilder = new FilterModel.FilerModelBuilder();
 
 
-  const filterModel = filterModelBuilder.setExpression('prop1', 1, FilterModel.cross, 'g').setExpression('prop1', 100, FilterModel.cross, 's').setExpression('prop2', 'test', FilterModel.cross, 'e').build();
+  const filterModel = filterModelBuilder.setExpression('prop1', 1, FilterModel.cross, 'g').setExpression('prop1', 100, FilterModel.cross, 's')
+    .setExpression('prop2', 'test', FilterModel.cross, 'e').build();
 
   console.log('Not Filtered...', filterable);
 
-  filterable = inorderTraverse(filterModel.tree, filterable);
+  filterable = FilterModel.inorderTraverse(filterModel.tree, filterable);
 
   console.log('Filtered...', filterable);
 
-
-  function inorderTraverse(current: Node, list) {
-
-    if (current.Left === null) {
-      list = list.filter((item) => {
-          return current.expression.result(item);
-        }
-      );
-      return list;
-    }
-
-    return current.method(inorderTraverse(current.Left, list), inorderTraverse(current.Right, list));
-
-
-  }
 
 }
