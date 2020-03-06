@@ -38,13 +38,13 @@ export class FilterComponent implements OnInit {
   generateExpression() {
 
 
-    this.filterModelBuilder.setExpression(new GreaterThan('price', this.filterCompinnetModel.priceAt, cross));
-    this.filterModelBuilder.setExpression(new SmallerThan('price', this.filterCompinnetModel.priceTo, cross));
+    this.filterModelBuilder.setExpression('price', this.filterCompinnetModel.priceAt, cross, 'g');
+    this.filterModelBuilder.setExpression('price', this.filterCompinnetModel.priceTo, cross, 's');
 
 
     for (const key in this.filterCompinnetModel.checkBoxValue) {
       if (this.filterCompinnetModel.checkBoxValue[key] === true) {
-        this.filterModelBuilder.setExpression(new Equal('category', key, join));
+        this.filterModelBuilder.setExpression('category', key, join, 'e');
       }
     }
 

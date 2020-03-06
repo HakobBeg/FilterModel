@@ -13,12 +13,8 @@ export default function Demo() {
 
   const filterModelBuilder = new FilterModel.FilerModelBuilder();
 
-  const expression1 = new FilterModel.SmallerThan('prop1', 100, FilterModel.cross);
-  const expression2 = new FilterModel.GreaterThan('prop1', 1, FilterModel.cross);
-  const expression3 = new FilterModel.Equal('prop2', 'test', FilterModel.cross);
 
-
-  const filterModel = filterModelBuilder.setExpression(expression1).setExpression(expression2).setExpression(expression3).build();
+  const filterModel = filterModelBuilder.setExpression('prop1', 1, FilterModel.cross, 'g').setExpression('prop1', 100, FilterModel.cross, 's').setExpression('prop2', 'test', FilterModel.cross, 'e').build();
 
   console.log('Not Filtered...', filterable);
 
