@@ -55,7 +55,7 @@ export class FilterComponent implements OnInit {
     this.generateExpression();
     this.filterModelBuilder.reset();
 
-    this.modelService.currentItemsChanges$.next(FilterModel.inorderTraverse(this.filterModel.tree, this.modelService.tableModel.allItems));
+    this.modelService.currentItemsChanges$.next(this.filterModel.filterList(this.modelService.tableModel.allItems));
 
   }
 

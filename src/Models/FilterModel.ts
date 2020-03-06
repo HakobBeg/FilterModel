@@ -1,21 +1,6 @@
 import {Item} from './ItemModel';
 
 
-export function inorderTraverse(current: Node, list) {
-
-  if (current.Left === null) {
-    list = list.filter((item) => {
-        return current.expression.result(item);
-      }
-    );
-    return list;
-  }
-
-  return current.method(inorderTraverse(current.Left, list), inorderTraverse(current.Right, list));
-
-
-}
-
 // standart, simple Node for BinaryTree
 
 export class Node {
@@ -172,10 +157,30 @@ export class FilerModelBuilder {
 export class FilterModel {
   tree: Node = null;
 
+
+
   constructor(expressions: BooleanExpression[]) {
     expressions.forEach(exp => this.addExpression(exp));
   }
 
+  inorderTraverse(current: Node, list) {
+
+    if (current.Left === null) {
+      list = list.filter((item) => {
+          return current.expression.result(item);
+        }
+      );
+      return list;
+    }
+
+    return current.method(this.inorderTraverse(current.Left, list), this.inorderTraverse(current.Right, list));
+
+
+  }
+
+  filterList(list) {
+    return this.inorderTraverse(this.tree, list);
+  }
 
   addExpression(exp: BooleanExpression) {
     if (this.tree === null) {

@@ -1,6 +1,4 @@
 import * as FilterModel from './FilterModel';
-import {Node} from './FilterModel';
-
 export default function Demo() {
 
   let filterable = [
@@ -19,7 +17,7 @@ export default function Demo() {
 
   console.log('Not Filtered...', filterable);
 
-  filterable = FilterModel.inorderTraverse(filterModel.tree, filterable);
+  filterable = filterModel.filterList(filterable);
 
   console.log('Filtered...', filterable);
 
