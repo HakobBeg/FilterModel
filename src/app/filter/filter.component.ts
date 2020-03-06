@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TableDBHandlerService} from '../../Services/table-dbhandler.service';
 import * as FilterModel from '../../Models/FilterModel';
-import {cross, Equal, GreaterThan, join, Node, SmallerThan} from '../../Models/FilterModel';
-import {Item} from '../../Models/ItemModel';
+import {cross, join} from '../../Models/FilterModel';
 import {FilterCmptModel} from '../../Models/FilterComponentModel';
 
 @Component({
